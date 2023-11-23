@@ -1,0 +1,49 @@
+# Setup: Import the module and function
+>>> mod = __import__("0-add_integer")
+>>> add_integer = mod.add_integer
+
+# Function Documentation
+>>> len(mod.__doc__) > 1
+True
+
+# Function Documentation
+>>> len(add_integer.__doc__) > 1
+True
+
+>>> add_integer(2, 3)
+5
+
+>>> add_integer(2, -5)
+-3
+
+>>> add_integer(2.7, -5)
+-3
+
+>>> add_integer(-2.1, -2.1)
+-4
+
+>>> add_integer(2)
+100
+
+# Test cases to check for TypeErrors
+>>> add_integer(5, "7")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+# Adding list and integer
+>>> add_integer([1, 2], 7)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+>>> add_integer(5, [1, 2])
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+# Test special float NaN in Python (not a number):
+>>> print(add_integer(float("NaN")))
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer

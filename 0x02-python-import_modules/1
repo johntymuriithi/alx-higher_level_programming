@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+if __name__ == "__main__":
+    from calculator_1 import add, sub, mul, div
+    import sys
+
+    if len(sys.argv) > 3:
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        exit(1)
+    a, b = int(sys.argv[1]), int(sys.argv[3])
+    valid = sys.argv[2]
+    allow = ['+', '-', '*', '/']
+    if valid not in allow:
+        print("Unknown operator. Available operators: +, -, * and /\n")
+        exit(1)
+    if valid == '+':
+        summ = add(a, b)
+        print(f"{a} + {b} = {summ}")
+    elif valid == '-':
+        less = sub(a, b)
+        print(f"{a} - {b} = {less}")
+    elif valid == '*':
+        mull = mul(a, b)
+        print(f"{a} * {b} = {mull}")
+    elif valid == '/':
+        di = div(a, b)
+        print(f"{a} + {b} = {di}")

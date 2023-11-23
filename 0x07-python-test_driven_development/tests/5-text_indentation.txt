@@ -1,0 +1,39 @@
+# Setup: Import the module and function
+>>> mod = __import__("5-text_indentation")
+>>> text_indentation = mod.text_indentation
+
+# Function Documentation
+>>> len(mod.__doc__) > 1
+True
+
+# Function Documentation
+>>> len(text_indentation.__doc__) > 1
+True
+
+>>> text = "This is. me."
+>>> text_indentation(text)
+This is.
+<BLANKLINE>
+me.
+<BLANKLINE>
+
+>>> text = "This is? me."
+>>> text_indentation(text)
+This is?
+<BLANKLINE>
+me.
+<BLANKLINE>
+
+>>> text = "This is: me."
+>>> text_indentation(text)
+This is:
+<BLANKLINE>
+me.
+<BLANKLINE>
+
+>>> text = 45
+>>> text_indentation(text)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+

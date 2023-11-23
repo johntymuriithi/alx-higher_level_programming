@@ -1,0 +1,37 @@
+# Setup: Import the module and function
+>>> mod = __import__("3-say_my_name")
+>>> say_my_name = mod.say_my_name
+
+# Function Documentation
+>>> len(mod.__doc__) > 1
+True
+
+# Function Documentation
+>>> len(say_my_name.__doc__) > 1
+True
+
+>>> first_name = "John"
+>>> last_name = "Bush"
+>>> say_my_name(first_name, last_name)
+My name is John Bush
+
+>>> first_name = 12
+>>> last_name = "Bush"
+>>> say_my_name(first_name, last_name)
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+>>> first_name = "John"
+>>> last_name = 12
+>>> say_my_name(first_name, last_name)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+>>> first_name = None
+>>> last_name = None
+>>> say_my_name(first_name, last_name)
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string

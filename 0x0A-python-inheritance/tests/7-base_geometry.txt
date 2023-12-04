@@ -1,0 +1,62 @@
+# Setup: Import the module and function
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+>>> mod = BaseGeometry()
+>>> mod.integer_validator("John", 40)
+
+>>> mod = BaseGeometry()
+>>> mod.integer_validator("John", -2)
+Traceback (most recent call last):
+    ...
+ValueError: John must be greater than 0
+
+>>> mod = BaseGeometry()
+>>> mod.integer_validator("John", 0)
+Traceback (most recent call last):
+    ...
+ValueError: John must be greater than 0
+
+>>> mod = BaseGeometry()
+>>> mod.integer_validator("John", "4")
+Traceback (most recent call last):
+    ...
+TypeError: John must be an integer
+
+
+>>> mod = BaseGeometry()
+>>> mod.integer_validator("John", (2,))
+Traceback (most recent call last):
+    ...
+TypeError: John must be an integer
+
+>>> mod = BaseGeometry()
+>>> mod.integer_validator("John", {2, 4})
+Traceback (most recent call last):
+    ...
+TypeError: John must be an integer
+
+>>> mod = BaseGeometry()
+>>> mod.integer_validator("John", True)
+Traceback (most recent call last):
+    ...
+TypeError: John must be an integer
+
+
+>>> mod = BaseGeometry()
+>>> mod.integer_validator("John", None)
+Traceback (most recent call last):
+    ...
+TypeError: John must be an integer
+
+
+>>> mod = BaseGeometry()
+>>> mod.integer_validator("John", [4])
+Traceback (most recent call last):
+    ...
+TypeError: John must be an integer
+
+>>> mod = BaseGeometry()
+>>> mod.integer_validator("age")
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 1 required positional argument: 'value'

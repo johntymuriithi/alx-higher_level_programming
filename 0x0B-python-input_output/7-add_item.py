@@ -1,25 +1,23 @@
 #!/usr/bin/python3
-"""
-    this method writes to file
-    """
 
+import json
+import sys
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
-def main():
-    """
-    this method writes to file
-    """
+with open("add_item.json", "a+", encoding="UTF8") as file:
+    file.seek(0)
+    list_in_file = file.read()
 
-    mod = __import__('sys')
-    mod2 = __import__('5-save_to_json_file')
-    mod1 = __import__('6-load_from_json_file')
-    args = mod.argv[1:]
-    mylist = list(args)
+    if list_in_file:
+        list_in_file = json.loads(list_in_file)
 
-    file2 = mod1.load_from_json_file('add_item.json') or []
-    file2.extend(mylist)
+if type(list_in_file) != list:
+    list_in_file = []
 
-    mod2.save_to_json_file(file2, 'add_item.json')
+for x in range(len(sys.argv)):
+    if x != 0:
+        list_in_file.append(sys.argv[x])
 
-
-if __name__ == "__main__":
-    main()
+with open("add_item.json", "w", encoding="UTF8") as file:
+    file.write(json.dumps(list_in_file))

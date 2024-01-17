@@ -1,2 +1,2 @@
--- prints full desc of a table
-DESC first_table
+-- prints full desc of a tab
+SHOW CREATE TABLE first_table

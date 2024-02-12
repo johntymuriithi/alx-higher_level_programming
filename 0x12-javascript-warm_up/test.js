@@ -1,2 +1,1 @@
-const name = 'john';
-console.log(name);
+console.log('jjjjjj');

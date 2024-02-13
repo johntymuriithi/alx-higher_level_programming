@@ -9,16 +9,16 @@ if (argv[2] === undefined) {
   console.log(0);
 } else {
   for (const x of argv) {
-    if (big < x) {
-      big = x;
+    if (big < parseInt(x)) {
+      big = parseInt(x);
     }
   }
   for (const x of argv) {
-    if (x === big) {
+    if (parseInt(x) === big) {
       continue;
     }
-    if (sec < x) {
-      sec = x;
+    if (sec < parseInt(x)) {
+      sec = parseInt(x);
     }
   }
   console.log(sec);

@@ -4,6 +4,7 @@ import MySQLdb
 import sys
 
 def list_states(username, password, database):
+    """my Orm"""
     # Connect to MySQL server
     db = MySQLdb.connect(host="localhost",
                          port=3306,

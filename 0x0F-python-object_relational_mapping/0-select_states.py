@@ -14,6 +14,7 @@ Attributes:
 import MySQLdb
 import sys
 
+
 def list_states(username, password, database):
     """my Orm"""
     # Connect to MySQL server
@@ -37,6 +38,7 @@ def list_states(username, password, database):
     # Close cursor and database connection
     cursor.close()
     db.close()
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:

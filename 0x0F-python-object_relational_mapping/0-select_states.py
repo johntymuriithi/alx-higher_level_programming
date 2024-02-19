@@ -1,5 +1,16 @@
 #!/usr/bin/python3
+"""A module to list all states from the hbtn_0e_0_usa database.
 
+This module provides a function to connect to a MySQL database and retrieve
+a list of all states from the hbtn_0e_0_usa database. The function takes
+three arguments: username, password, and database name.
+
+Example:
+    $ python 0-select_states.py root root hbtn_0e_0_usa
+
+Attributes:
+    None
+"""
 import MySQLdb
 import sys
 

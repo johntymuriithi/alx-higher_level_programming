@@ -26,7 +26,7 @@ def list_states(username, password, database, element):
     cursor = db.cursor()
 
     # Execute SQL query to select states with the specified name
-    cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (element,))
+    cursor.execute("SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(element))
 
     # Fetch all rows
     states = cursor.fetchall()

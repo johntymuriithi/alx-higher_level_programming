@@ -26,7 +26,8 @@ def list_states(username, password, database, element):
     cursor = db.cursor()
 
     # Execute SQL query to select states with the specified name
-    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id ASC".format(element))
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY \
+                    '{}' ORDER BY id ASC".format(element))
 
     # Fetch all rows
     states = cursor.fetchall()

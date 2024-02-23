@@ -26,22 +26,28 @@ def list_states(username, password, database, element):
                          db=database)
     cursor = db.cursor()
 
-    # Execute SQL query to select states with the specified name
-    cursor.execute("SELECT cities.id, cities.name, states.name\
-                   FROM cities JOIN states ON cities.state_id = states.id \
-                            WHERE states.name = %s ORDER BY cities.id ASC", (element,))
+    cursor.execute("""
+            SELECT cities.id, cities.name
+            FROM cities
+            JOIN states ON cities.state_id = states.id
+            WHERE states.name = %s
+            ORDER BY cities.id ASC
+        """, (element,))
 
-    # Fetch all rows
-    cities = cursor.fetchall()
+        # Fetch all the rows
+    rows = cursor.fetchall()
 
-    # Display results
-    for city in cities:
-        new = city[1:]
+        # Display the results
+    for row in rows:
+        new = row[1:]
         myturple += new
-    
+    i = 0
     for state in myturple:
-        print(state, end=', ')
-
+        i += 1
+        if i < len(myturple):
+            print(state, end=', ')
+        else:
+            print(state)
 
     # Close cursor and database connection
     cursor.close()

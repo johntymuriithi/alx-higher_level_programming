@@ -31,7 +31,7 @@ def list_states(username, password, database, element):
 
     # Fetch all rows
     states = cursor.fetchall()
-    
+
     # Display results
     for state in states:
         print(state)
@@ -43,7 +43,8 @@ def list_states(username, password, database, element):
 
 if __name__ == "__main__":
     if len(sys.argv) != 5:
-        print("Usage: python script.py <username> <password> <database> <element>")
+        print("Usage: python script.py <username>\
+              <password> <database> <element>")
         sys.exit(1)
 
     username, password, database, element = sys.argv[1:]

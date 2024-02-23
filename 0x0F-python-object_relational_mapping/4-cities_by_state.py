@@ -1,51 +1,44 @@
 #!/usr/bin/python3
-"""A module to list all states from the hbtn_0e_0_usa database.
+"""A script to list all cities from the database hbtn_0e_4_usa."""
 
-This module provides a function to connect to a MySQL database and retrieve
-a list of all states from the hbtn_0e_0_usa database. The function takes
-three arguments: username, password, and database name.
-
-Example:
-    $ python 0-select_states.py root root hbtn_0e_0_usa
-
-Attributes:
-    None
-"""
 import MySQLdb
 import sys
 
+def list_cities(username, password, database):
+    """Connect to the MySQL server and list all cities."""
+    try:
+        # Connect to MySQL server
+        db = MySQLdb.connect(host="localhost",
+                             port=3306,
+                             user=username,
+                             passwd=password,
+                             db=database)
+        cursor = db.cursor()
 
-def list_states(username, password, database):
-    """my Orm"""
-    # Connect to MySQL server
-    db = MySQLdb.connect(host="localhost",
-                         port=3306,
-                         user=username,
-                         passwd=password,
-                         db=database)
-    cursor = db.cursor()
+        # Execute SQL query to select all cities
+        cursor.execute("SELECT * FROM cities ORDER BY id ASC")
 
-    # Execute SQL query to select states with the specified name
-    cursor.execute("SELECT * FROM cities ORDER BY id ASC")
+        # Fetch all rows
+        cities = cursor.fetchall()
 
-    # Fetch all rows
-    cities = cursor.fetchall()
+        # Display results
+        for city in cities:
+            print(city)
 
-    # Display results
-    for city in cities:
-        print(city)
+    except MySQLdb.Error as e:
+        print("Error accessing database:", e)
 
-    # Close cursor and database connection
-    cursor.close()
-    db.close()
-
+    finally:
+        # Close cursor and database connection
+        if 'db' in locals() and db is not None:
+            db.close()
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Usage: python script.py <username>\
-              <password> <database>")
+        print("Usage: python script.py <username> <password> <database>")
         sys.exit(1)
 
     username, password, database = sys.argv[1:]
 
-    list_states(username, password, database)
+    list_cities(username, password, database)
+

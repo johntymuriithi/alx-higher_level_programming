@@ -1,0 +1,9 @@
+-- creates the MySQL server user user_0d_1
+-- should have all privileges
+-- password should be set to user_0d_1_pwd
+-- if user_0d_2 already exists, script should not fail
+
+CREATE USER IF NOT EXISTS 'user_0d_2'@'localhost' IDENTIFIED BY 'user_0d_2_pwd';
+CREATE database 'hbtn_0d_2';
+GRANT SELECT ON 'hbtn_0d_2' TO 'user_0d_2'@'localhost';
+FLUSH PRIVILEGES;

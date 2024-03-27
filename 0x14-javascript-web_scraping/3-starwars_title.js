@@ -2,12 +2,14 @@
 
 const request = require('request');
 
-const url = process.argv[2];
+const movieId = process.argv[2];
+const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
 
-request(url, (error, response) => {
+request(apiUrl, (error, response, body) => {
   if (error) {
     console.error(error);
   } else {
-    console.log(`code: ${response.statusCode}`);
+    const movieData = JSON.parse(body);
+    console.log(movieData.title);
   }
 });
